@@ -1,0 +1,7 @@
+to get access to Google Sheet via API
+
+1) followed following tutorial : https://devpower.co.uk/dotnet/how-to-manage-google-sheets-with-csharp/
+2) create service, generate credentials as explained here : https://devpower.co.uk/dotnet/how-to-manage-google-sheets-with-csharp/#Generate_Credentials
+3) share the sheet with the newly created service account user, as explained here : https://stackoverflow.com/a/49965912
+4) created a first version of GSheetsHelper
+5) toaster : https://vladislavantonyuk.github.io/articles/How-to-show-SnackBar-and-Toast-in-.NET-MAUI/

@@ -10,7 +10,7 @@ public partial class PinItemsSourcePage : ContentPage
     {
         InitializeComponent();
         BindingContext = new PinItemsSourcePageViewModel();
-        map.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(39.8283459, -98.5794797), Distance.FromMiles(1500)));
+        map.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(57.6, 11.8), Distance.FromKilometers(50)));
     }
 
     void OnMapClicked(object sender, MapClickedEventArgs e)

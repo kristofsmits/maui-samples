@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿using Microsoft.Maui.Storage;
+using System.Collections;
 using System.Collections.ObjectModel;
+using System.Reflection;
 using System.Windows.Input;
 using WorkingWithMaps.Models;
+using WorkingWithMapsLib.Datastructures;
+using WorkingWithMapsLib.Utilities;
 
 namespace WorkingWithMaps.ViewModels;
 
@@ -20,11 +24,21 @@ public class PinItemsSourcePageViewModel
 
     public PinItemsSourcePageViewModel()
     {
-        _positions = new ObservableCollection<Position>()
+        string _spreadsheetId = "12SQY5ElDVm5uRaFJ6o5YcEV-fjyWB8BQQFn9xSh7A5I";
+        string _range = "A2:Z100";
+        string relativeCredentialsPath = "Credentials/handi-credentials.json";
+
+        string currentDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        string fullCredentialsPath = Path.Combine(currentDir, relativeCredentialsPath);
+
+        GSheetsHelper g = new GSheetsHelper(relativeCredentialsPath, _spreadsheetId, _range);
+        List<HandiSpot> handiSpots = g.GetItems().ConvertAll(l => HandiSpot.CreateFrom(l));
+
+        _positions = new ObservableCollection<Position>();
+        foreach (HandiSpot handiSpot in handiSpots) 
         {
-            new Position("New York, USA", "The City That Never Sleeps", new Location(40.67, -73.94)),
-            new Position("Los Angeles, USA", "City of Angels", new Location(34.11, -118.41)),
-            new Position("San Francisco, USA", "Bay City", new Location(37.77, -122.45))
+            Position pos = new Position(handiSpot.Id, handiSpot.Name + " - " + handiSpot.Number, new Location(handiSpot.GeoCoordinate.Latitude, handiSpot.GeoCoordinate.Longitude));
+            _positions.Add(pos);
         };
 
         AddLocationCommand = new Command(AddLocation);
@@ -36,6 +50,7 @@ public class PinItemsSourcePageViewModel
 
     void AddLocation()
     {
+
         _positions.Add(NewPosition());
     }
 
