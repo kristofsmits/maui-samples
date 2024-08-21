@@ -7,6 +7,10 @@
     <TableView Intent="Menu">
         <TableRoot>
             <TableSection>
+                <TextCell Text="H-spot"
+                          Detail="the spot you cán find"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="{x:Type views:PinItemsSourcePage}" />
                 <TextCell Text="Map types"
                           Detail="Display a map with zooming and different map types."
                           Command="{Binding NavigateCommand}"
@@ -23,10 +27,6 @@
                           Detail="Add a pin to a map."
                           Command="{Binding NavigateCommand}"
                           CommandParameter="{x:Type views:PinPage}" />
-                <TextCell Text="Pins with data binding"
-                          Detail="Adds a pin collection to a map."
-                          Command="{Binding NavigateCommand}"
-                          CommandParameter="{x:Type views:PinItemsSourcePage}" />
                 <TextCell Text="Polygon and polyline"
                           Detail="Add polygons and polylines to a map."
                           Command="{Binding NavigateCommand}"

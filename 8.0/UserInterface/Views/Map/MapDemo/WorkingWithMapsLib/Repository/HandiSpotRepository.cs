@@ -21,15 +21,50 @@ namespace WorkingWithMapsLib.Repository
         }
 
         public List<HandiSpot> getAll() {
-            List<HandiSpot> handiSpots = gSheetsHelper.GetItems().ConvertAll(l => HandiSpot.CreateFrom(l));
+            List<HandiSpot> handiSpots = gSheetsHelper.GetItems().ConvertAll(l => HandiSpot.FromGoogleSheetEntry(l));
             return handiSpots;
+        }
+
+        public HandiSpot get(string id)
+        {
+            List<HandiSpot> handiSpots = gSheetsHelper.GetItems().ConvertAll(l => HandiSpot.FromGoogleSheetEntry(l));
+            return handiSpots.FirstOrDefault(x => x.Id.Equals(id), null);
         }
 
         public List<HandiSpot> getAllWithinDistance(GeoCoordinate center, double distanceInMeter)
         {
-            List<HandiSpot> handiSpots = gSheetsHelper.GetItems().ConvertAll(l => HandiSpot.CreateFrom(l));
+            List<HandiSpot> handiSpots = gSheetsHelper.GetItems().ConvertAll(l => HandiSpot.FromGoogleSheetEntry(l));
             handiSpots.Where(x => center.GetDistanceTo(x.GeoCoordinate) <= distanceInMeter).ToList();
             return handiSpots;
+        }
+
+        public async Task<bool> add(HandiSpot handiSpot)
+        {
+            try
+            {
+                List<object> googleSheetEntry = handiSpot.ToGoogleSheetEntry();
+                await gSheetsHelper.AddItem(googleSheetEntry);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // TODO : log
+                return false;
+            }
+        }
+
+        public bool delete(string id)
+        {
+            try
+            {
+                gSheetsHelper.RemoveItem(id).GetAwaiter().GetResult();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // TODO : log
+                return false;
+            }
         }
     }
 }

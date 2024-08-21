@@ -55,59 +55,54 @@ public class GSheetsHelper
         }
     }
 
-    //public async Task AddItem(string itemName, decimal quantity)
-    //{
-    //    var valuesToInsert = new List<object>
-    //    {
-    //        itemName,
-    //        quantity
-    //    };
+    public async Task AddItem(List<object> list)
+    {
 
-    //    SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum valueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.RAW;
-    //    SpreadsheetsResource.ValuesResource.AppendRequest.InsertDataOptionEnum insertDataOption = SpreadsheetsResource.ValuesResource.AppendRequest.InsertDataOptionEnum.INSERTROWS;
+        SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum valueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.RAW;
+        SpreadsheetsResource.ValuesResource.AppendRequest.InsertDataOptionEnum insertDataOption = SpreadsheetsResource.ValuesResource.AppendRequest.InsertDataOptionEnum.INSERTROWS;
 
-    //    var requestBody = new ValueRange();
-    //    requestBody.Values = new List<IList<object>>();
-    //    requestBody.Values.Add(valuesToInsert);
+        var requestBody = new ValueRange();
+        requestBody.Values = new List<IList<object>>();
+        requestBody.Values.Add(list.ConvertAll(s => (object)s));
 
-    //    SpreadsheetsResource.ValuesResource.AppendRequest appendRequest = _sheetsService.Spreadsheets.Values.Append(requestBody, _spreadsheetId, _range);
-    //    appendRequest.ValueInputOption = valueInputOption;
-    //    appendRequest.InsertDataOption = insertDataOption;
-        
-    //    await appendRequest.ExecuteAsync();
-    //}
+        SpreadsheetsResource.ValuesResource.AppendRequest appendRequest = _sheetsService.Spreadsheets.Values.Append(requestBody, _spreadsheetId, _range);
+        appendRequest.ValueInputOption = valueInputOption;
+        appendRequest.InsertDataOption = insertDataOption;
 
-    //public async Task RemoveItem(string itemName)
-    //{
-    //    SpreadsheetsResource.ValuesResource.GetRequest getRequest = _sheetsService.Spreadsheets.Values.Get(_spreadsheetId, _range);
-        
-    //    var getResponse = await getRequest.ExecuteAsync();
-    //    IList<IList<Object>> values = getResponse.Values;
-    //    if (values != null && values.Count > 0)
-    //    {
-    //        for (int i = 0; i < values.Count; i++)
-    //        {
-    //            if (values[i][0].ToString() == itemName)
-    //            {
-    //                var request = new Request
-    //                {
-    //                    DeleteDimension = new DeleteDimensionRequest
-    //                    {
-    //                        Range = new DimensionRange
-    //                        {
-    //                            SheetId = 0,
-    //                            Dimension = "ROWS",
-    //                            StartIndex = i + 1,
-    //                            EndIndex = i + 2
-    //                        }
-    //                    }
-    //                };
-                    
-    //                var deleteRequest = new BatchUpdateSpreadsheetRequest {Requests = new List<Request> {request}};
-    //                var batchUpdateRequest = new SpreadsheetsResource.BatchUpdateRequest(_sheetsService, deleteRequest, _spreadsheetId);
-    //                await batchUpdateRequest.ExecuteAsync();
-    //            }
-    //        }
-    //    }
-    //}
+        await appendRequest.ExecuteAsync();
+    }
+
+    public async Task RemoveItem(string id)
+    {
+        SpreadsheetsResource.ValuesResource.GetRequest getRequest = _sheetsService.Spreadsheets.Values.Get(_spreadsheetId, _range);
+
+        var getResponse = await getRequest.ExecuteAsync();
+        IList<IList<Object>> values = getResponse.Values;
+        if (values != null && values.Count > 0)
+        {
+            for (int i = 0; i < values.Count; i++)
+            {
+                if (values[i][0].ToString() == id)
+                {
+                    var request = new Request
+                    {
+                        DeleteDimension = new DeleteDimensionRequest
+                        {
+                            Range = new DimensionRange
+                            {
+                                SheetId = 0,
+                                Dimension = "ROWS",
+                                StartIndex = i + 1,
+                                EndIndex = i + 2
+                            }
+                        }
+                    };
+
+                    var deleteRequest = new BatchUpdateSpreadsheetRequest { Requests = new List<Request> { request } };
+                    var batchUpdateRequest = new SpreadsheetsResource.BatchUpdateRequest(_sheetsService, deleteRequest, _spreadsheetId);
+                    await batchUpdateRequest.ExecuteAsync();
+                }
+            }
+        }
+    }
 }

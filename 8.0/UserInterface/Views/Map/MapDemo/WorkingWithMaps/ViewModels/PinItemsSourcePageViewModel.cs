@@ -1,10 +1,15 @@
-﻿using Microsoft.Maui.Storage;
+﻿using CommunityToolkit.Maui.Alerts;
+using Firebase.Storage;
+using GeoCoordinatePortable;
+using Microsoft.Maui.Storage;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Input;
 using WorkingWithMaps.Models;
 using WorkingWithMapsLib.Datastructures;
+using WorkingWithMapsLib.Repository;
 using WorkingWithMapsLib.Utilities;
 
 namespace WorkingWithMaps.ViewModels;
@@ -12,7 +17,8 @@ namespace WorkingWithMaps.ViewModels;
 public class PinItemsSourcePageViewModel
 {
     int _pinCreatedCount = 0;
-    readonly ObservableCollection<Position> _positions;
+    ObservableCollection<Position> _positions = new ObservableCollection<Position>();
+    private HandiSpotRepository handiSpotRepository = new HandiSpotRepository("Credentials/handi-credentials.json");
 
     public IEnumerable Positions => _positions;
 
@@ -22,36 +28,113 @@ public class PinItemsSourcePageViewModel
     public ICommand UpdateLocationsCommand { get; }
     public ICommand ReplaceLocationCommand { get; }
 
-    public PinItemsSourcePageViewModel()
-    {
-        string _spreadsheetId = "12SQY5ElDVm5uRaFJ6o5YcEV-fjyWB8BQQFn9xSh7A5I";
-        string _range = "A2:Z100";
-        string relativeCredentialsPath = "Credentials/handi-credentials.json";
-
-        string currentDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        string fullCredentialsPath = Path.Combine(currentDir, relativeCredentialsPath);
-
-        GSheetsHelper g = new GSheetsHelper(relativeCredentialsPath, _spreadsheetId, _range);
-        List<HandiSpot> handiSpots = g.GetItems().ConvertAll(l => HandiSpot.CreateFrom(l));
-
-        _positions = new ObservableCollection<Position>();
-        foreach (HandiSpot handiSpot in handiSpots) 
+    public void rebind() {
+        _positions.Clear();
+        List<HandiSpot> handiSpots = handiSpotRepository.getAll();
+        foreach (HandiSpot handiSpot in handiSpots)
         {
-            Position pos = new Position(handiSpot.Id, handiSpot.Name + " - " + handiSpot.Number, new Location(handiSpot.GeoCoordinate.Latitude, handiSpot.GeoCoordinate.Longitude));
+            Position pos = new Position(handiSpot.Name, toDescription(handiSpot.Number, handiSpot.Paiement), new Location(handiSpot.GeoCoordinate.Latitude, handiSpot.GeoCoordinate.Longitude));
             _positions.Add(pos);
         };
+    }
 
+    private string toDescription(int number, Paiement paiement) {
+        string description = "";
+        if (number == 0)
+        {
+            description = "? spots";
+        }
+        else if (number == 1)
+        {
+            description = "1 spot";
+        }
+        else
+        {
+            description = number + " spots";
+        }
+
+        if (paiement == Paiement.FREE)
+        {
+            description += " (free)";
+        }
+        else {
+            description += " (money)";
+        }
+
+        return description;
+
+    }
+
+    public PinItemsSourcePageViewModel()
+    {
         AddLocationCommand = new Command(AddLocation);
         RemoveLocationCommand = new Command(RemoveLocation);
         ClearLocationsCommand = new Command(() => _positions.Clear());
         UpdateLocationsCommand = new Command(UpdateLocations);
         ReplaceLocationCommand = new Command(ReplaceLocation);
+
+        rebind();
     }
 
-    void AddLocation()
+    static private FileResult photo = null;
+    private static void MyFunction()
     {
 
-        _positions.Add(NewPosition());
+        if (MediaPicker.Default.IsCaptureSupported)
+        {
+            photo = MediaPicker.Default.CapturePhotoAsync().GetAwaiter().GetResult();
+        }
+    }
+
+    private async void AddLocation()
+    {
+        MauiHelper mauiHelper = new MauiHelper();
+        Location currentLocation = mauiHelper.GetCurrentLocation();
+        if (currentLocation == null)
+        {
+            // TODO : log
+            MauiHelper.ShowToaster("Unable to get current location");
+            return;
+        }
+
+        MauiHelper.ShowToaster("Current location " + currentLocation.Longitude + " - " + currentLocation.Latitude);
+
+        // take photo
+        if (MediaPicker.Default.IsCaptureSupported)
+        {
+            photo = await MediaPicker.Default.CapturePhotoAsync();
+        }
+
+        // save the file into local storage
+        // string localFilePath = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
+        using Stream sourceStream = photo.OpenReadAsync().GetAwaiter().GetResult();
+        // using FileStream localFileStream = File.OpenWrite(localFilePath);
+        // sourceStream.CopyToAsync(localFileStream).GetAwaiter().GetResult();
+
+        // FileResult fileResult = FilePicker.PickAsync().Result;
+        // Stream fileToUpload = fileResult.OpenReadAsync().Result;
+
+        // upload
+        MauiHelper.ShowToaster("Start upload");
+        FirebaseStorage firebaseStorage = new FirebaseStorage("handi-431506.appspot.com");
+        string url = await firebaseStorage.Child(photo.FileName).PutAsync(sourceStream);
+
+        MauiHelper.ShowToaster("url : " + url);
+        HandiSpot hs = new HandiSpot(Guid.NewGuid().ToString(), "name", DateTime.Now, new GeoCoordinate(currentLocation.Latitude, currentLocation.Longitude), 1, Paiement.FREE, false, false, url);
+
+        MauiHelper.ShowToaster("adding to Google Sheet");
+        bool success = await handiSpotRepository.add(hs);
+
+        if (success)
+        {
+            MauiHelper.ShowToaster("succes");
+        }
+        else {
+            MauiHelper.ShowToaster("failed");
+        }
+
+        photo = null;
+        rebind();
     }
 
     void RemoveLocation()

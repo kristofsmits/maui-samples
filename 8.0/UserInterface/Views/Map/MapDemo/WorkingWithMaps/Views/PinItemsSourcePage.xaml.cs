@@ -6,11 +6,15 @@ namespace WorkingWithMaps.Views;
 
 public partial class PinItemsSourcePage : ContentPage
 {
+    private PinItemsSourcePageViewModel viewModel = new PinItemsSourcePageViewModel();
+    private MauiHelper mauiHelper = new MauiHelper();
+
     public PinItemsSourcePage()
     {
         InitializeComponent();
-        BindingContext = new PinItemsSourcePageViewModel();
-        map.MoveToRegion(MapSpan.FromCenterAndRadius(new Location(57.6, 11.8), Distance.FromKilometers(50)));
+        BindingContext = viewModel;
+        Location currentLocation = mauiHelper.GetCurrentLocation();
+        map.MoveToRegion(MapSpan.FromCenterAndRadius(currentLocation, Distance.FromKilometers(10)));
     }
 
     void OnMapClicked(object sender, MapClickedEventArgs e)

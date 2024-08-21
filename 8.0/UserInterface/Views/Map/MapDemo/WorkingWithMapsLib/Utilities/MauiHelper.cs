@@ -1,30 +1,41 @@
 ﻿using System;
 using System.Reflection;
+using System.Threading.Tasks;
 using Microsoft.Maui.Devices.Sensors;
 using Microsoft.Maui.Storage;
+using WorkingWithMapsLib.Datastructures;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
 
 public class MauiHelper
 {
     private CancellationTokenSource _cancelTokenSource;
     private bool _isCheckingLocation;
 
+    public MauiHelper()
+    {
+    }
+
     public Location GetCurrentLocation()
     {
+        Location latestLocation = null;
+
         try
         {
             _isCheckingLocation = true;
 
-            GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+            latestLocation = Geolocation.GetLastKnownLocationAsync().GetAwaiter().GetResult();
+            if (latestLocation == null)
+            {
+                latestLocation = Geolocation.GetLocationAsync(new GeolocationRequest()
+                {
+                    DesiredAccuracy = GeolocationAccuracy.High,
+                    Timeout = TimeSpan.FromSeconds(30)
+                }).GetAwaiter().GetResult();
+            }
 
-            _cancelTokenSource = new CancellationTokenSource();
-
-            Location location = Geolocation.Default.GetLocationAsync(request, _cancelTokenSource.Token).Result;
-
-            if (location != null)
-                Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-
-
-            return location;
+        if (latestLocation != null)
+                Console.WriteLine($"Latitude: {latestLocation.Latitude}, Longitude: {latestLocation.Longitude}, Altitude: {latestLocation.Altitude}");
         }
         // Catch one of the following exceptions:
         //   FeatureNotSupportedException
@@ -40,12 +51,19 @@ public class MauiHelper
         {
             _isCheckingLocation = false;
         }
-        return null;
+
+        return latestLocation;
     }
 
-    public void CancelRequest()
+    private void CancelGetCurrentLocationRequest()
     {
         if (_isCheckingLocation && _cancelTokenSource != null && _cancelTokenSource.IsCancellationRequested == false)
             _cancelTokenSource.Cancel();
+    }
+
+    public static void ShowToaster(string message) {
+        CancellationToken _cancelTokenSource = new CancellationToken();
+        var toast = Toast.Make(message, ToastDuration.Short, 11);
+        toast.Show(_cancelTokenSource);
     }
 }

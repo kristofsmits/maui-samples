@@ -31,6 +31,8 @@
         </Grid.RowDefinitions>
         <maps:Map x:Name="map"
                   MapClicked="OnMapClicked"
+                  IsShowingUser="True"
+                  IsZoomEnabled="True"
                   ItemsSource="{Binding Positions}">
             <!-- Alternatively, set ItemTemplateSelector to MapItemTemplateSelector -->
             <maps:Map.ItemTemplate>

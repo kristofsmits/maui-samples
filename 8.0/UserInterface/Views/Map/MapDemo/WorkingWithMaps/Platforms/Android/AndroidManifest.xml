@@ -4,6 +4,10 @@
 		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyC5ML20M5U7M70_xCNTNBnUsElCYNefnS0" />
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 	</application>
+	
+	<!-- https://www.telerik.com/blogs/beyond-basics-getting-started-media-picker-net-maui -->
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
 
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
