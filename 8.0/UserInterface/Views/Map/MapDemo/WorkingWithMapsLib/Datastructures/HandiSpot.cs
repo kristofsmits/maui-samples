@@ -1,10 +1,13 @@
 ﻿using GeoCoordinatePortable;
 using System.Globalization;
+using WorkingWithMapsLib.Utilities;
 
 namespace WorkingWithMapsLib.Datastructures
 {
     public class HandiSpot
     {
+        private static string no_image_url = "https://firebasestorage.googleapis.com/v0/b/handi-431506.appspot.com/o/HandiSpots%2Fno_image_available.png?alt=media&token=4cb1aecc-b481-4ef8-84bc-c8451e0c4341";
+
         public string Id { get; private set; }
         public string Name { get; private set; }
         public DateTime CreationDate { get; private set; }
@@ -13,9 +16,10 @@ namespace WorkingWithMapsLib.Datastructures
         public Paiement Paiement { get; private set; }
         public bool Confirmed { get; private set; }
         public bool Ignore { get; private set; }
+        public string Source { get; private set; }
         public string ImageUrl { get; private set; }
 
-        public HandiSpot(string id, string name, DateTime creationDate, GeoCoordinate geoCoordinate, int number, Paiement paiement, bool confirmed, bool ignore, string imageUrl)
+        public HandiSpot(string id, string name, DateTime creationDate, GeoCoordinate geoCoordinate, int number, Paiement paiement, bool confirmed, bool ignore, string source, string imageUrl)
         {
             Id = id;
             Name = name;
@@ -25,6 +29,7 @@ namespace WorkingWithMapsLib.Datastructures
             Paiement = paiement;
             Confirmed = confirmed;
             Ignore = ignore;
+            Source = source;
             ImageUrl = imageUrl;
         }
 
@@ -43,6 +48,7 @@ namespace WorkingWithMapsLib.Datastructures
             list.Add(Paiement.ToString());
             list.Add(Confirmed);
             list.Add(Ignore);
+            list.Add(Source);
             list.Add(ImageUrl);
             return list;
         }
@@ -54,15 +60,21 @@ namespace WorkingWithMapsLib.Datastructures
                 string id = googleSheetRow[0];
                 string name = googleSheetRow[1];
                 DateTime creationDate = parseToDateTime(googleSheetRow[2]);
-                double latitude = parseToDouble(googleSheetRow[3]);
-                double longitude = parseToDouble(googleSheetRow[4]);
+                double latitude = ConversionHelper.parseToDouble(googleSheetRow[3]);
+                double longitude = ConversionHelper.parseToDouble(googleSheetRow[4]);
                 int number = Convert.ToInt32(googleSheetRow[5]);
                 Enum.TryParse(googleSheetRow[6], out Paiement paiement);
                 bool confirmed = Convert.ToBoolean(googleSheetRow[7]);
                 bool ignore = Convert.ToBoolean(googleSheetRow[8]);
-                string imageUrl = googleSheetRow[9];
+                string source = googleSheetRow[9];
+                string imageUrl = no_image_url;
+                // support for entries without image, in that case, the row is one size shorter
+                if (googleSheetRow.Count == 11)
+                {
+                    imageUrl = googleSheetRow[10];
+                }
 
-                return new HandiSpot(id, name, creationDate, new GeoCoordinate(latitude, longitude), number, paiement, confirmed, ignore, imageUrl);
+                return new HandiSpot(id, name, creationDate, new GeoCoordinate(latitude, longitude), number, paiement, confirmed, ignore, source, imageUrl);
             }
             catch (Exception ex)
             {
@@ -71,14 +83,6 @@ namespace WorkingWithMapsLib.Datastructures
                 return null;
             }
 
-        }
-
-        // parse any double, whether comma or point is used as decimal separator
-        // https://stackoverflow.com/questions/11560465/parse-strings-to-double-with-comma-and-point
-        private static double parseToDouble(string text)
-        {
-            text = text.Replace(',', '.');
-            return double.Parse(text, NumberStyles.Any, CultureInfo.InvariantCulture);
         }
 
         // see https://stackoverflow.com/a/60205610

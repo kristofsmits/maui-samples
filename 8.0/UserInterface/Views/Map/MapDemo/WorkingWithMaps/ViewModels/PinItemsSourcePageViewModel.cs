@@ -120,7 +120,7 @@ public class PinItemsSourcePageViewModel
         string url = await firebaseStorage.Child(photo.FileName).PutAsync(sourceStream);
 
         MauiHelper.ShowToaster("url : " + url);
-        HandiSpot hs = new HandiSpot(Guid.NewGuid().ToString(), "name", DateTime.Now, new GeoCoordinate(currentLocation.Latitude, currentLocation.Longitude), 1, Paiement.FREE, false, false, url);
+        HandiSpot hs = new HandiSpot(Guid.NewGuid().ToString(), "name", DateTime.Now, new GeoCoordinate(currentLocation.Latitude, currentLocation.Longitude), 1, Paiement.FREE, false, false, "User", url);
 
         MauiHelper.ShowToaster("adding to Google Sheet");
         bool success = await handiSpotRepository.add(hs);

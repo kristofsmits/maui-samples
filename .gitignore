@@ -359,3 +359,4 @@ Resource.designer.cs
 *.zip
 8.0/UserInterface/Views/Map/MapDemo/WorkingWithMaps/Credentials/handi-credentials.json
 8.0/UserInterface/Views/Map/MapDemo/WorkingWithMapsTest/Credentials/handi-credentials.json
+8.0/UserInterface/Views/Map/MapDemo/Datasets/Credentials/handi-credentials.json

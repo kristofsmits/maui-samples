@@ -11,7 +11,7 @@ namespace WorkingWithMapsTest.Repository
     {
         private HandiSpot createDummyHandiSpot(string uniqueId)
         {
-            return new HandiSpot(uniqueId, "HandiSpotRepositoryTest", DateTime.Now, new GeoCoordinate(25.25, 50.50), 1000, Paiement.UNKOWN, false, true, "https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-Test.png");
+            return new HandiSpot(uniqueId, "HandiSpotRepositoryTest", DateTime.Now, new GeoCoordinate(25.25, 50.50), 1000, Paiement.UNKOWN, false, true, "unittest", "https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-Test.png");
         }
 
         [Fact]
