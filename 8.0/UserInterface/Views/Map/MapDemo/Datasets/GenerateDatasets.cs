@@ -17,7 +17,7 @@ namespace Datasets
         HandiSpotRepository repository = new HandiSpotRepository("Credentials/handi-credentials.json");
 
 
-        [Fact (Skip = "specific reason")]
+        [Fact (Skip = "generation of dataset, this is not a test")]
         public void Brussel()
         {
             List<HandiSpot> handiSpots = new List<HandiSpot>();

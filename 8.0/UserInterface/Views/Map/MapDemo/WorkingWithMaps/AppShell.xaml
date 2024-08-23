@@ -7,8 +7,10 @@
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate views:MainPage}"
-        Route="MainPage" />
+        Title="BlueSpot"
+        ContentTemplate="{DataTemplate views:PinItemsSourcePage}"
+        Route="PinItemsSourcePage" />
+    <!--ContentTemplate="{DataTemplate views:MainPage}"
+        Route="MainPage" />-->
 
 </Shell>

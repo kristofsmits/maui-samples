@@ -1,6 +1,9 @@
 ﻿using WorkingWithMaps.ViewModels;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
+using System.Globalization;
+using static System.Net.WebRequestMethods;
+using System.ComponentModel;
 
 namespace WorkingWithMaps.Views;
 
@@ -8,6 +11,7 @@ public partial class PinItemsSourcePage : ContentPage
 {
     private PinItemsSourcePageViewModel viewModel = new PinItemsSourcePageViewModel();
     private MauiHelper mauiHelper = new MauiHelper();
+    private static Pin latestPinClicked = null;
 
     public PinItemsSourcePage()
     {
@@ -20,5 +24,81 @@ public partial class PinItemsSourcePage : ContentPage
     void OnMapClicked(object sender, MapClickedEventArgs e)
     {
         System.Diagnostics.Debug.WriteLine($"MapClick: {e.Location.Latitude}, {e.Location.Longitude}");
+        streetview.IsVisible = false;
+    }
+
+
+    void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        // https://github.com/dotnet/maui/issues/16556
+        if (e.PropertyName == nameof(Microsoft.Maui.Controls.Maps.Map.VisibleRegion))
+        {
+            streetview.IsVisible = false;
+        }
+    }
+
+    void OnTrafficCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        map.IsTrafficEnabled = !map.IsTrafficEnabled;
+    }
+
+    void OnMarkerClickedAsync(object sender, PinClickedEventArgs e)
+    {
+        latestPinClicked = (Pin)sender;
+        // e.HideInfoWindow = true;
+        streetview.IsVisible = true;
+        // await DisplayAlert("Pin Clicked", $"{pinName} was clicked.", "Ok");
+    }
+
+    async void StreetviewButtonCLickedAsync(object sender, EventArgs e)
+    {
+        // string url = "https://maps.google.com/maps?q=&layer=c&cbll=31.335198,-89.287204&cbp=11,0,0,0,0";
+        // e.HideInfoWindow = true;
+       
+        NumberFormatInfo nfi = new NumberFormatInfo();
+        nfi.NumberDecimalSeparator = ".";
+        string lo = latestPinClicked.Location.Longitude.ToString(nfi);
+        string la = latestPinClicked.Location.Latitude.ToString(nfi);
+
+        // await DisplayAlert("InfoWindow Clicked", $"{pinName} was clicked.", "Ok");
+
+        //string url = "https://www.google.com/maps/embed/v1/streetview"
+        //    + "?key=AIzaSyC5ML20M5U7M70_xCNTNBnUsElCYNefnS0"
+        //    + "&location=" + lo + "," + la
+        //    + "&heading=210"
+        //    + "&pitch=10"
+        //    + "&fov=35";
+
+        string url = "https://maps.google.com/maps?q=&layer=c&cbll="
+                           + la + "," + lo + "&cbp=";
+
+        Page page = new StreetView(url);
+        await Navigation.PushAsync(page);
+    }
+
+    async void InfoWindowClickedAsync(object sender, PinClickedEventArgs e)
+    {
+        // string url = "https://maps.google.com/maps?q=&layer=c&cbll=31.335198,-89.287204&cbp=11,0,0,0,0";
+        // e.HideInfoWindow = true;
+        Pin pin = ((Pin)sender);
+        NumberFormatInfo nfi = new NumberFormatInfo();
+        nfi.NumberDecimalSeparator = ".";
+        string lo = pin.Location.Longitude.ToString(nfi);
+        string la = pin.Location.Latitude.ToString(nfi);
+        string pinName = ((Pin)sender).Label;
+        // await DisplayAlert("InfoWindow Clicked", $"{pinName} was clicked.", "Ok");
+
+        //string url = "https://www.google.com/maps/embed/v1/streetview"
+        //    + "?key=AIzaSyC5ML20M5U7M70_xCNTNBnUsElCYNefnS0"
+        //    + "&location=" + lo + "," + la
+        //    + "&heading=210"
+        //    + "&pitch=10"
+        //    + "&fov=35";
+
+        string url = "https://maps.google.com/maps?q=&layer=c&cbll="
+                           + la + "," + lo + "&cbp=";
+
+        Page page = new StreetView(url);
+        await Navigation.PushAsync(page);
     }
 }

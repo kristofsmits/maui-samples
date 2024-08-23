@@ -4,7 +4,7 @@
              xmlns:templates="clr-namespace:WorkingWithMaps.Templates"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              x:Class="WorkingWithMaps.Views.PinItemsSourcePage"
-             Title="Databinding pins demo (Collection)">
+             Title="">
     <!--<ContentPage.Resources>
         <templates:MapItemTemplateSelector x:Key="MapItemTemplateSelector">
             <templates:MapItemTemplateSelector.DefaultTemplate>
@@ -31,13 +31,16 @@
         </Grid.RowDefinitions>
         <maps:Map x:Name="map"
                   MapClicked="OnMapClicked"
+                  PropertyChanged ="OnPropertyChanged"
                   IsShowingUser="True"
                   IsZoomEnabled="True"
                   ItemsSource="{Binding Positions}">
             <!-- Alternatively, set ItemTemplateSelector to MapItemTemplateSelector -->
             <maps:Map.ItemTemplate>
                 <DataTemplate>
-                    <maps:Pin Location="{Binding Location}"
+                    <maps:Pin MarkerClicked="OnMarkerClickedAsync"
+                              InfoWindowClicked="InfoWindowClickedAsync"
+                              Location="{Binding Location}"
                               Address="{Binding Address}"
                               Label="{Binding Description}" />
                 </DataTemplate>    
@@ -51,13 +54,40 @@
                         Command="{Binding AddLocationCommand}" />
                 <Button Text="Remove"
                         Command="{Binding RemoveLocationCommand}" />
-                <Button Text="Clear"
-                        Command="{Binding ClearLocationsCommand}" />
                 <Button Text="Update"
                         Command="{Binding UpdateLocationsCommand}" />
-                <Button Text="Replace"
-                        Command="{Binding ReplaceLocationCommand}" />
+                <CheckBox x:Name="showTrafficCheckBox"
+                        CheckedChanged="OnTrafficCheckBoxCheckedChanged" />
+                <Label Text="traffic" />
             </StackLayout>
         </ScrollView>
+        <AbsoluteLayout HorizontalOptions="Center">
+            <Button x:Name="streetview"
+                    IsVisible="False"
+                    Text="Add"
+                    Clicked="StreetviewButtonCLickedAsync"
+                    AbsoluteLayout.LayoutBounds="0,0.6,200,70"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    BackgroundColor="Red"
+                    HorizontalOptions="Center"/>
+            <!--<ListView
+                x:Name="listview1"
+                AbsoluteLayout.LayoutBounds=".5,.5,200,30"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                BackgroundColor="Red"
+                HorizontalOptions="Center"
+                ItemsSource="{Binding players}"
+                RowHeight="50">
+
+                --><!--<ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            /*Stack for properites*/
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>--><!--
+
+            </ListView>-->
+        </AbsoluteLayout>
     </Grid>
 </ContentPage>

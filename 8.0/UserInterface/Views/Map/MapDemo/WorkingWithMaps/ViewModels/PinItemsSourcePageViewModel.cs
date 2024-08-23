@@ -33,7 +33,7 @@ public class PinItemsSourcePageViewModel
         List<HandiSpot> handiSpots = handiSpotRepository.getAll();
         foreach (HandiSpot handiSpot in handiSpots)
         {
-            Position pos = new Position(handiSpot.Name, toDescription(handiSpot.Number, handiSpot.Paiement), new Location(handiSpot.GeoCoordinate.Latitude, handiSpot.GeoCoordinate.Longitude));
+            Position pos = new Position("<click for StreetView>", toDescription(handiSpot.Number, handiSpot.Paiement), new Location(handiSpot.GeoCoordinate.Latitude, handiSpot.GeoCoordinate.Longitude));
             _positions.Add(pos);
         };
     }
