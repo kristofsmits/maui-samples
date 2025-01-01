@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkingWithMapsTest", "Work
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkingWithMapsLib", "WorkingWithMapsLib\WorkingWithMapsLib.csproj", "{11985B5E-5D75-4704-A488-F09B315EE7E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datasets", "Datasets\Datasets.csproj", "{272DF05A-F531-482C-9296-855EE2DD8CEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Datasets", "Datasets\Datasets.csproj", "{272DF05A-F531-482C-9296-855EE2DD8CEC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueSpot.Client.Sdk", "BlueSpot.Client.Sdk\src\BlueSpot.Client.Sdk\BlueSpot.Client.Sdk.csproj", "{37480D63-6964-435F-A033-45ADFCA81D24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{272DF05A-F531-482C-9296-855EE2DD8CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{272DF05A-F531-482C-9296-855EE2DD8CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{272DF05A-F531-482C-9296-855EE2DD8CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37480D63-6964-435F-A033-45ADFCA81D24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37480D63-6964-435F-A033-45ADFCA81D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37480D63-6964-435F-A033-45ADFCA81D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37480D63-6964-435F-A033-45ADFCA81D24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

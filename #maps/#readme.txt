@@ -11,3 +11,8 @@ to get access to Google Sheet via API
 
 TODO permissions
 https://www.telerik.com/blogs/beyond-basics-getting-started-media-picker-net-maui
+
+
+https://cloud.google.com/sdk/docs/install-sdk
+
+https://learn.microsoft.com/en-us/azure/azure-functions/functions-create-your-first-function-visual-studio
