@@ -1,14 +1,13 @@
 .gitignore
-.openapi-generator-ignore
 BlueSpot.Client.Sdk.sln
 README.md
 api/openapi.yaml
 appveyor.yml
-docs/TestControllerApi.md
+docs/DebugControllerApi.md
 git_push.sh
-src/BlueSpot.Client.Sdk.Test/Api/TestControllerApiTests.cs
+src/BlueSpot.Client.Sdk.Test/Api/DebugControllerApiTests.cs
 src/BlueSpot.Client.Sdk.Test/BlueSpot.Client.Sdk.Test.csproj
-src/BlueSpot.Client.Sdk/Api/TestControllerApi.cs
+src/BlueSpot.Client.Sdk/Api/DebugControllerApi.cs
 src/BlueSpot.Client.Sdk/BlueSpot.Client.Sdk.csproj
 src/BlueSpot.Client.Sdk/Client/ApiClient.cs
 src/BlueSpot.Client.Sdk/Client/ApiException.cs

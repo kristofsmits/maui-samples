@@ -4,15 +4,15 @@ info:
   version: v0
 servers:
 - description: Generated server url
-  url: http://bluespotserver.nw.r.appspot.com
+  url: http://localhost:8080
 paths:
-  /public/test/{uuid}:
+  /api/public/debug/hash/{input}:
     get:
-      operationId: getPart
+      operationId: hash
       parameters:
       - explode: false
         in: path
-        name: uuid
+        name: input
         required: true
         schema:
           type: string
@@ -20,13 +20,34 @@ paths:
       responses:
         "200":
           content:
-            application/json:
+            text/plain:
               schema:
                 type: string
           description: OK
-      summary: Returns a Hello World message
+      summary: Public debug api that returns a hash
       tags:
-      - test-controller
+      - debug-controller
+  /api/debug/hash/{input}:
+    get:
+      operationId: hash2
+      parameters:
+      - explode: false
+        in: path
+        name: input
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: OK
+      summary: Private debug api that returns a hash
+      tags:
+      - debug-controller
 components:
   schemas: {}
 

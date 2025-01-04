@@ -110,7 +110,7 @@ namespace BlueSpot.Client.Sdk.Client
         {
             Proxy = null;
             UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/1.0.0/csharp");
-            BasePath = "http://bluespotserver.nw.r.appspot.com";
+            BasePath = "http://localhost:8080";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -118,7 +118,7 @@ namespace BlueSpot.Client.Sdk.Client
             {
                 {
                     new Dictionary<string, object> {
-                        {"url", "http://bluespotserver.nw.r.appspot.com"},
+                        {"url", "http://localhost:8080"},
                         {"description", "Generated server url"},
                     }
                 }
@@ -139,7 +139,7 @@ namespace BlueSpot.Client.Sdk.Client
             IDictionary<string, string> defaultHeaders,
             IDictionary<string, string> apiKey,
             IDictionary<string, string> apiKeyPrefix,
-            string basePath = "http://bluespotserver.nw.r.appspot.com") : this()
+            string basePath = "http://localhost:8080") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");

@@ -72,19 +72,19 @@ namespace Example
         {
 
             Configuration config = new Configuration();
-            config.BasePath = "http://bluespotserver.nw.r.appspot.com";
-            var apiInstance = new TestControllerApi(config);
-            var uuid = "uuid_example";  // string | 
+            config.BasePath = "http://localhost:8080";
+            var apiInstance = new DebugControllerApi(config);
+            var input = "input_example";  // string | 
 
             try
             {
-                // Returns a Hello World message
-                string result = apiInstance.GetPart(uuid);
+                // Public debug api that returns a hash
+                string result = apiInstance.Hash(input);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling TestControllerApi.GetPart: " + e.Message );
+                Debug.Print("Exception when calling DebugControllerApi.Hash: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -97,11 +97,12 @@ namespace Example
 <a id="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://bluespotserver.nw.r.appspot.com*
+All URIs are relative to *http://localhost:8080*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*TestControllerApi* | [**GetPart**](docs\TestControllerApi.md#getpart) | **GET** /public/test/{uuid} | Returns a Hello World message
+*DebugControllerApi* | [**Hash**](docs\DebugControllerApi.md#hash) | **GET** /api/public/debug/hash/{input} | Public debug api that returns a hash
+*DebugControllerApi* | [**Hash2**](docs\DebugControllerApi.md#hash2) | **GET** /api/debug/hash/{input} | Private debug api that returns a hash
 
 
 <a id="documentation-for-models"></a>
