@@ -4,13 +4,13 @@ using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Text;
 
-namespace BlueSpot.Client.SDK.Test
+namespace BlueSpot.Utilities
 {
-    public class IamClient
+    public class BlueSpotTokenHelper
     {
         private readonly string iamBasePath;
 
-        public IamClient(string iamBasePath)
+        public BlueSpotTokenHelper(string iamBasePath)
         {
             this.iamBasePath = iamBasePath;
         }

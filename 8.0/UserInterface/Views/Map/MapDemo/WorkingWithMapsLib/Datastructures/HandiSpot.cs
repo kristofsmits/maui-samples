@@ -1,6 +1,6 @@
 ﻿using GeoCoordinatePortable;
 using System.Globalization;
-using WorkingWithMapsLib.Utilities;
+using BlueSpot.Utilities;
 
 namespace WorkingWithMapsLib.Datastructures
 {

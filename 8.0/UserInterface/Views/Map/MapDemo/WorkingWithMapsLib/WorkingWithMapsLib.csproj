@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bluespot.Client.Sdk\src\Bluespot.Client.Sdk\Bluespot.Client.Sdk.csproj" />
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
 
 </Project>

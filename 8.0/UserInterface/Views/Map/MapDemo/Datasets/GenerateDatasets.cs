@@ -8,7 +8,7 @@ using Windows.UI.Popups;
 using GeoCoordinatePortable;
 using WorkingWithMapsLib.Utilities;
 using WorkingWithMapsLib.Repository;
-using UglyToad.PdfPig.DocumentLayoutAnalysis;
+using BlueSpot.Utilities;
 
 namespace Datasets
 {

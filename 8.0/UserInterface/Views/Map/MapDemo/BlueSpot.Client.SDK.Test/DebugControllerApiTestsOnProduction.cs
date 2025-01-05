@@ -1,6 +1,7 @@
 ﻿using BlueSpot.Client.Sdk.Api;
 using BlueSpot.Client.Sdk.Client;
 using BlueSpot.Client.Sdk.Model;
+using BlueSpot.Utilities;
 
 namespace BlueSpot.Client.SDK.Test
 {
@@ -10,8 +11,8 @@ namespace BlueSpot.Client.SDK.Test
         [Fact]
         public void GetTokenForExistingUserTest()
         {
-            IamClient iamClient = new IamClient("https://bluespotserver.nw.r.appspot.com");
-            string test = iamClient.GetToken("admin","admin");
+            BlueSpotTokenHelper blueSpotTokenHelper = new BlueSpotTokenHelper("https://bluespotserver.nw.r.appspot.com");
+            string test = blueSpotTokenHelper.GetToken("admin","admin");
             Assert.NotNull(test);
             Assert.True(test.Length > 0);
         }
@@ -19,8 +20,8 @@ namespace BlueSpot.Client.SDK.Test
         [Fact]
         public void GetTokenForNonExistingUserTest()
         {
-            IamClient iamClient = new IamClient("https://bluespotserver.nw.r.appspot.com");
-            string test = iamClient.GetToken("nonexistinguser", "nonexistinguser_password");
+            BlueSpotTokenHelper blueSpotTokenHelper = new BlueSpotTokenHelper("https://bluespotserver.nw.r.appspot.com");
+            string test = blueSpotTokenHelper.GetToken("nonexistinguser", "nonexistinguser_password");
             Assert.Null(test);
         }
 
@@ -36,8 +37,8 @@ namespace BlueSpot.Client.SDK.Test
         [Fact]
         public void PrivateHashTest()
         {
-            IamClient iamClient = new IamClient("https://bluespotserver.nw.r.appspot.com");
-            string token = iamClient.GetToken("admin", "admin");
+            BlueSpotTokenHelper blueSpotTokenHelper = new BlueSpotTokenHelper("https://bluespotserver.nw.r.appspot.com");
+            string token = blueSpotTokenHelper.GetToken("admin", "admin");
             Configuration configuration = new Configuration();
             configuration.BasePath = "https://bluespotserver.nw.r.appspot.com";
             configuration.AccessToken = token;
