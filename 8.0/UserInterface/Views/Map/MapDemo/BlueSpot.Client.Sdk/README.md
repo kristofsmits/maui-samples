@@ -73,18 +73,16 @@ namespace Example
 
             Configuration config = new Configuration();
             config.BasePath = "http://localhost:8080";
-            var apiInstance = new DebugControllerApi(config);
-            var input = "input_example";  // string | 
+            var apiInstance = new DatatypesControllerApi(config);
 
             try
             {
-                // Public debug api that returns a hash
-                string result = apiInstance.Hash(input);
+                string result = apiInstance.GetDatatypes();
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling DebugControllerApi.Hash: " + e.Message );
+                Debug.Print("Exception when calling DatatypesControllerApi.GetDatatypes: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -101,13 +99,70 @@ All URIs are relative to *http://localhost:8080*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DatatypesControllerApi* | [**GetDatatypes**](docs\DatatypesControllerApi.md#getdatatypes) | **GET** /rest/metadata/datatypes | 
 *DebugControllerApi* | [**Hash**](docs\DebugControllerApi.md#hash) | **GET** /api/public/debug/hash/{input} | Public debug api that returns a hash
 *DebugControllerApi* | [**Hash2**](docs\DebugControllerApi.md#hash2) | **GET** /api/debug/hash/{input} | Private debug api that returns a hash
+*DocumentationControllerApi* | [**GetOpenApiJson**](docs\DocumentationControllerApi.md#getopenapijson) | **GET** /rest/docs/openapi.json | 
+*DocumentationControllerApi* | [**GetOpenApiYaml**](docs\DocumentationControllerApi.md#getopenapiyaml) | **GET** /rest/docs/openapi.yaml | 
+*DocumentationControllerApi* | [**GetProjectOpenApiJson**](docs\DocumentationControllerApi.md#getprojectopenapijson) | **GET** /rest/docs/openapiDetailed.json | 
+*DocumentationControllerApi* | [**GetProjectOpenApiYaml**](docs\DocumentationControllerApi.md#getprojectopenapiyaml) | **GET** /rest/docs/openapiDetailed.yaml | 
+*EntitiesControllerApi* | [**CountSearchEntitiesListGet**](docs\EntitiesControllerApi.md#countsearchentitieslistget) | **GET** /rest/entities/{entityName}/search/count | 
+*EntitiesControllerApi* | [**CountSearchEntitiesListPost**](docs\EntitiesControllerApi.md#countsearchentitieslistpost) | **POST** /rest/entities/{entityName}/search/count | 
+*EntitiesControllerApi* | [**CreateEntity**](docs\EntitiesControllerApi.md#createentity) | **POST** /rest/entities/{entityName} | 
+*EntitiesControllerApi* | [**DeleteEntities**](docs\EntitiesControllerApi.md#deleteentities) | **DELETE** /rest/entities/{entityName} | 
+*EntitiesControllerApi* | [**DeleteEntity**](docs\EntitiesControllerApi.md#deleteentity) | **DELETE** /rest/entities/{entityName}/{entityId} | 
+*EntitiesControllerApi* | [**LoadEntitiesList**](docs\EntitiesControllerApi.md#loadentitieslist) | **GET** /rest/entities/{entityName} | 
+*EntitiesControllerApi* | [**LoadEntity**](docs\EntitiesControllerApi.md#loadentity) | **GET** /rest/entities/{entityName}/{entityId} | 
+*EntitiesControllerApi* | [**SearchEntitiesListGet**](docs\EntitiesControllerApi.md#searchentitieslistget) | **GET** /rest/entities/{entityName}/search | 
+*EntitiesControllerApi* | [**SearchEntitiesListPost**](docs\EntitiesControllerApi.md#searchentitieslistpost) | **POST** /rest/entities/{entityName}/search | 
+*EntitiesControllerApi* | [**UpdateEntities**](docs\EntitiesControllerApi.md#updateentities) | **PUT** /rest/entities/{entityName} | 
+*EntitiesControllerApi* | [**UpdateEntity**](docs\EntitiesControllerApi.md#updateentity) | **PUT** /rest/entities/{entityName}/{entityId} | 
+*EntitiesMetadataControllerApi* | [**GetAllFetchPlansForMetaClass**](docs\EntitiesMetadataControllerApi.md#getallfetchplansformetaclass) | **GET** /rest/metadata/entities/{entityName}/fetchPlans | 
+*EntitiesMetadataControllerApi* | [**GetAllMetaClassesInfo**](docs\EntitiesMetadataControllerApi.md#getallmetaclassesinfo) | **GET** /rest/metadata/entities | 
+*EntitiesMetadataControllerApi* | [**GetAllViewsForMetaClass**](docs\EntitiesMetadataControllerApi.md#getallviewsformetaclass) | **GET** /rest/metadata/entities/{entityName}/views | 
+*EntitiesMetadataControllerApi* | [**GetFetchPlan**](docs\EntitiesMetadataControllerApi.md#getfetchplan) | **GET** /rest/metadata/entities/{entityName}/fetchPlans/{fetchPlanName} | 
+*EntitiesMetadataControllerApi* | [**GetMetaClassInfo**](docs\EntitiesMetadataControllerApi.md#getmetaclassinfo) | **GET** /rest/metadata/entities/{entityName} | 
+*EntitiesMetadataControllerApi* | [**GetView**](docs\EntitiesMetadataControllerApi.md#getview) | **GET** /rest/metadata/entities/{entityName}/views/{viewName} | 
+*EnumsControllerApi* | [**GetAllEnumInfos**](docs\EnumsControllerApi.md#getallenuminfos) | **GET** /rest/metadata/enums | 
+*EnumsControllerApi* | [**GetEnumInfo**](docs\EnumsControllerApi.md#getenuminfo) | **GET** /rest/metadata/enums/{enumClassName} | 
+*FileDownloadControllerApi* | [**DownloadFile**](docs\FileDownloadControllerApi.md#downloadfile) | **GET** /rest/files | 
+*FileUploadControllerApi* | [**UploadFile1**](docs\FileUploadControllerApi.md#uploadfile1) | **POST** /rest/files | 
+*MessagesControllerApi* | [**GetLocalizationForAllEntities**](docs\MessagesControllerApi.md#getlocalizationforallentities) | **GET** /rest/messages/entities | 
+*MessagesControllerApi* | [**GetLocalizationForAllEnums**](docs\MessagesControllerApi.md#getlocalizationforallenums) | **GET** /rest/messages/enums | 
+*MessagesControllerApi* | [**GetLocalizationForEntity**](docs\MessagesControllerApi.md#getlocalizationforentity) | **GET** /rest/messages/entities/{entityName} | 
+*MessagesControllerApi* | [**GetLocalizationForEnum**](docs\MessagesControllerApi.md#getlocalizationforenum) | **GET** /rest/messages/enums/{enumClassName} | 
+*PermissionsControllerApi* | [**GetPermissions**](docs\PermissionsControllerApi.md#getpermissions) | **GET** /rest/permissions | 
+*QueriesControllerApi* | [**ExecuteQueryGet**](docs\QueriesControllerApi.md#executequeryget) | **GET** /rest/queries/{entityName}/{queryName} | 
+*QueriesControllerApi* | [**ExecuteQueryPost**](docs\QueriesControllerApi.md#executequerypost) | **POST** /rest/queries/{entityName}/{queryName} | 
+*QueriesControllerApi* | [**GetCountGetText1**](docs\QueriesControllerApi.md#getcountgettext1) | **GET** /rest/queries/{entityName}/{queryName}/count | 
+*QueriesControllerApi* | [**GetCountPostText1**](docs\QueriesControllerApi.md#getcountposttext1) | **POST** /rest/queries/{entityName}/{queryName}/count | 
+*QueriesControllerApi* | [**LoadQueriesList**](docs\QueriesControllerApi.md#loadquerieslist) | **GET** /rest/queries/{entityName} | 
+*ServicesControllerApi* | [**GetServiceInfo**](docs\ServicesControllerApi.md#getserviceinfo) | **GET** /rest/services/{serviceName} | 
+*ServicesControllerApi* | [**GetServiceInfos**](docs\ServicesControllerApi.md#getserviceinfos) | **GET** /rest/services | 
+*ServicesControllerApi* | [**InvokeServiceMethodGet**](docs\ServicesControllerApi.md#invokeservicemethodget) | **GET** /rest/services/{serviceName}/{methodName} | 
+*ServicesControllerApi* | [**InvokeServiceMethodPost**](docs\ServicesControllerApi.md#invokeservicemethodpost) | **POST** /rest/services/{serviceName}/{methodName} | 
+*UserInfoControllerApi* | [**GetUserInfo**](docs\UserInfoControllerApi.md#getuserinfo) | **GET** /rest/userInfo | 
+*UserSessionControllerApi* | [**SetSessionLocale**](docs\UserSessionControllerApi.md#setsessionlocale) | **PUT** /rest/user-session/locale | 
+*VersionControllerApi* | [**GetApiVersion**](docs\VersionControllerApi.md#getapiversion) | **GET** /rest/version | 
 
 
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [Model.DebugResponse](docs\DebugResponse.md)
+ - [Model.EnumInfo](docs\EnumInfo.md)
+ - [Model.EnumValueInfo](docs\EnumValueInfo.md)
+ - [Model.FileInfoResponse](docs\FileInfoResponse.md)
+ - [Model.MetaClassInfo](docs\MetaClassInfo.md)
+ - [Model.MetaPropertyInfo](docs\MetaPropertyInfo.md)
+ - [Model.PermissionsInfo](docs\PermissionsInfo.md)
+ - [Model.QueryInfo](docs\QueryInfo.md)
+ - [Model.QueryParamInfo](docs\QueryParamInfo.md)
+ - [Model.RestMethodInfo](docs\RestMethodInfo.md)
+ - [Model.RestMethodParamInfo](docs\RestMethodParamInfo.md)
+ - [Model.RestServiceInfo](docs\RestServiceInfo.md)
+ - [Model.ShortPermissionInfo](docs\ShortPermissionInfo.md)
+ - [Model.UserInfo](docs\UserInfo.md)
 
 
 <a id="documentation-for-authorization"></a>

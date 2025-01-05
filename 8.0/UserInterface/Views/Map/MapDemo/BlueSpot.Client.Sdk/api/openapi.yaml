@@ -6,6 +6,1319 @@ servers:
 - description: Generated server url
   url: http://localhost:8080
 paths:
+  /rest/user-session/locale:
+    put:
+      operationId: setSessionLocale
+      responses:
+        "200":
+          description: OK
+      tags:
+      - user-session-controller
+  /rest/entities/{entityName}:
+    delete:
+      operationId: deleteEntities
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: object
+          description: OK
+      tags:
+      - entities-controller
+    get:
+      operationId: loadEntitiesList
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: fetchPlan
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: returnNulls
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: returnCount
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: dynamicAttributes
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-controller
+    post:
+      operationId: createEntity
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: responseView
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: responseFetchPlan
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-controller
+    put:
+      operationId: updateEntities
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: responseView
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: responseFetchPlan
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-controller
+  /rest/entities/{entityName}/{entityId}:
+    delete:
+      operationId: deleteEntity
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: entityId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: object
+          description: OK
+      tags:
+      - entities-controller
+    get:
+      operationId: loadEntity
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: entityId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: fetchPlan
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: returnNulls
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: dynamicAttributes
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-controller
+    put:
+      operationId: updateEntity
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: entityId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: responseView
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: responseFetchPlan
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-controller
+  /rest/services/{serviceName}/{methodName}:
+    get:
+      operationId: invokeServiceMethodGet
+      parameters:
+      - explode: false
+        in: path
+        name: serviceName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: methodName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: paramsMap
+        required: true
+        schema:
+          additionalProperties:
+            type: string
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+      tags:
+      - services-controller
+    post:
+      operationId: invokeServiceMethodPost
+      parameters:
+      - explode: false
+        in: path
+        name: serviceName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: methodName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+      tags:
+      - services-controller
+  /rest/queries/{entityName}/{queryName}:
+    get:
+      operationId: executeQueryGet
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: queryName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: view
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: fetchPlan
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: returnNulls
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: dynamicAttributes
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: returnCount
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: params
+        required: true
+        schema:
+          additionalProperties:
+            type: string
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - queries-controller
+    post:
+      operationId: executeQueryPost
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: queryName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: view
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: fetchPlan
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: returnNulls
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: dynamicAttributes
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: returnCount
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - queries-controller
+  /rest/queries/{entityName}/{queryName}/count:
+    get:
+      operationId: getCountGetText_1
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: queryName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: params
+        required: true
+        schema:
+          additionalProperties:
+            type: string
+          type: object
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain;charset=UTF-8:
+              schema:
+                type: string
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - queries-controller
+    post:
+      operationId: getCountPostText_1
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: queryName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain;charset=UTF-8:
+              schema:
+                type: string
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - queries-controller
+  /rest/files:
+    get:
+      operationId: downloadFile
+      parameters:
+      - explode: true
+        in: query
+        name: fileRef
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: attachment
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          description: OK
+      tags:
+      - file-download-controller
+    post:
+      operationId: uploadFile_1
+      parameters:
+      - explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: storageName
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/uploadFile_1_request'
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FileInfoResponse'
+          description: OK
+      tags:
+      - file-upload-controller
+  /rest/entities/{entityName}/search:
+    get:
+      operationId: searchEntitiesListGet
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: filter
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: fetchPlan
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sort
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: returnNulls
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: returnCount
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: dynamicAttributes
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-controller
+    post:
+      operationId: searchEntitiesListPost
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-controller
+  /rest/entities/{entityName}/search/count:
+    get:
+      operationId: countSearchEntitiesListGet
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: filter
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: modelVersion
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-controller
+    post:
+      operationId: countSearchEntitiesListPost
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-controller
+  /rest/version:
+    get:
+      operationId: getApiVersion
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+      tags:
+      - version-controller
+  /rest/userInfo:
+    get:
+      operationId: getUserInfo
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+          description: OK
+      tags:
+      - user-info-controller
+  /rest/services:
+    get:
+      operationId: getServiceInfos
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/RestServiceInfo'
+                type: array
+          description: OK
+      tags:
+      - services-controller
+  /rest/services/{serviceName}:
+    get:
+      operationId: getServiceInfo
+      parameters:
+      - explode: false
+        in: path
+        name: serviceName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RestServiceInfo'
+          description: OK
+      tags:
+      - services-controller
+  /rest/queries/{entityName}:
+    get:
+      operationId: loadQueriesList
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/QueryInfo'
+                type: array
+          description: OK
+      tags:
+      - queries-controller
+  /rest/permissions:
+    get:
+      operationId: getPermissions
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/PermissionsInfo'
+          description: OK
+      tags:
+      - permissions-controller
+  /rest/metadata/enums:
+    get:
+      operationId: getAllEnumInfos
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/EnumInfo'
+                type: array
+          description: OK
+      tags:
+      - enums-controller
+  /rest/metadata/enums/{enumClassName}:
+    get:
+      operationId: getEnumInfo
+      parameters:
+      - explode: false
+        in: path
+        name: enumClassName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/EnumInfo'
+          description: OK
+      tags:
+      - enums-controller
+  /rest/metadata/entities:
+    get:
+      operationId: getAllMetaClassesInfo
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MetaClassInfo'
+                type: array
+          description: OK
+      tags:
+      - entities-metadata-controller
+  /rest/metadata/entities/{entityName}:
+    get:
+      operationId: getMetaClassInfo
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/MetaClassInfo'
+          description: OK
+      tags:
+      - entities-metadata-controller
+  /rest/metadata/entities/{entityName}/views:
+    get:
+      operationId: getAllViewsForMetaClass
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-metadata-controller
+  /rest/metadata/entities/{entityName}/views/{viewName}:
+    get:
+      operationId: getView
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: viewName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-metadata-controller
+  /rest/metadata/entities/{entityName}/fetchPlans:
+    get:
+      operationId: getAllFetchPlansForMetaClass
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-metadata-controller
+  /rest/metadata/entities/{entityName}/fetchPlans/{fetchPlanName}:
+    get:
+      operationId: getFetchPlan
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: fetchPlanName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - entities-metadata-controller
+  /rest/metadata/datatypes:
+    get:
+      operationId: getDatatypes
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - datatypes-controller
+  /rest/messages/enums:
+    get:
+      operationId: getLocalizationForAllEnums
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+          description: OK
+      tags:
+      - messages-controller
+  /rest/messages/enums/{enumClassName}:
+    get:
+      operationId: getLocalizationForEnum
+      parameters:
+      - explode: false
+        in: path
+        name: enumClassName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+          description: OK
+      tags:
+      - messages-controller
+  /rest/messages/entities:
+    get:
+      operationId: getLocalizationForAllEntities
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+          description: OK
+      tags:
+      - messages-controller
+  /rest/messages/entities/{entityName}:
+    get:
+      operationId: getLocalizationForEntity
+      parameters:
+      - explode: false
+        in: path
+        name: entityName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+          description: OK
+      tags:
+      - messages-controller
+  /rest/docs/openapiDetailed.yaml:
+    get:
+      operationId: getProjectOpenApiYaml
+      responses:
+        "200":
+          content:
+            application/yaml:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - documentation-controller
+  /rest/docs/openapiDetailed.json:
+    get:
+      operationId: getProjectOpenApiJson
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - documentation-controller
+  /rest/docs/openapi.yaml:
+    get:
+      operationId: getOpenApiYaml
+      responses:
+        "200":
+          content:
+            application/yaml:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - documentation-controller
+  /rest/docs/openapi.json:
+    get:
+      operationId: getOpenApiJson
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+      tags:
+      - documentation-controller
   /api/public/debug/hash/{input}:
     get:
       operationId: hash
@@ -20,9 +1333,9 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/DebugResponse'
           description: OK
       summary: Public debug api that returns a hash
       tags:
@@ -41,13 +1354,328 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/DebugResponse'
           description: OK
       summary: Private debug api that returns a hash
       tags:
       - debug-controller
 components:
-  schemas: {}
+  schemas:
+    FileInfoResponse:
+      example:
+        size: 0
+        name: name
+        fileRef: fileRef
+      properties:
+        fileRef:
+          type: string
+        name:
+          type: string
+        size:
+          format: int64
+          type: integer
+      type: object
+    UserInfo:
+      example:
+        attributes:
+          key: "{}"
+        locale: locale
+        username: username
+      properties:
+        username:
+          type: string
+        locale:
+          type: string
+        attributes:
+          additionalProperties:
+            type: object
+          type: object
+      type: object
+    RestMethodInfo:
+      example:
+        name: name
+        httpMethod: httpMethod
+        params:
+        - name: name
+          type: type
+          required: true
+        - name: name
+          type: type
+          required: true
+      properties:
+        name:
+          type: string
+        httpMethod:
+          type: string
+        params:
+          items:
+            $ref: '#/components/schemas/RestMethodParamInfo'
+          type: array
+      type: object
+    RestMethodParamInfo:
+      example:
+        name: name
+        type: type
+        required: true
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        required:
+          type: boolean
+      type: object
+    RestServiceInfo:
+      example:
+        methods:
+        - name: name
+          httpMethod: httpMethod
+          params:
+          - name: name
+            type: type
+            required: true
+          - name: name
+            type: type
+            required: true
+        - name: name
+          httpMethod: httpMethod
+          params:
+          - name: name
+            type: type
+            required: true
+          - name: name
+            type: type
+            required: true
+        name: name
+      properties:
+        name:
+          type: string
+        methods:
+          items:
+            $ref: '#/components/schemas/RestMethodInfo'
+          type: array
+      type: object
+    QueryInfo:
+      example:
+        jpql: jpql
+        viewName: viewName
+        offset: 6
+        entityName: entityName
+        name: name
+        limit: 0
+        fetchPlanName: fetchPlanName
+        cacheable: true
+        anonymousAllowed: true
+        params:
+        - name: name
+          type: type
+        - name: name
+          type: type
+      properties:
+        name:
+          type: string
+        jpql:
+          type: string
+        entityName:
+          type: string
+        viewName:
+          type: string
+        fetchPlanName:
+          type: string
+        limit:
+          format: int32
+          type: integer
+        offset:
+          format: int32
+          type: integer
+        cacheable:
+          type: boolean
+        anonymousAllowed:
+          type: boolean
+        params:
+          items:
+            $ref: '#/components/schemas/QueryParamInfo'
+          type: array
+      type: object
+    QueryParamInfo:
+      example:
+        name: name
+        type: type
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      type: object
+    PermissionsInfo:
+      example:
+        entityAttributes:
+        - value: 0
+          target: target
+        - value: 0
+          target: target
+        entities:
+        - value: 0
+          target: target
+        - value: 0
+          target: target
+        authorities:
+        - authorities
+        - authorities
+        specifics:
+        - value: 0
+          target: target
+        - value: 0
+          target: target
+      properties:
+        authorities:
+          items:
+            type: string
+          type: array
+        entities:
+          items:
+            $ref: '#/components/schemas/ShortPermissionInfo'
+          type: array
+        entityAttributes:
+          items:
+            $ref: '#/components/schemas/ShortPermissionInfo'
+          type: array
+        specifics:
+          items:
+            $ref: '#/components/schemas/ShortPermissionInfo'
+          type: array
+      type: object
+    ShortPermissionInfo:
+      example:
+        value: 0
+        target: target
+      properties:
+        target:
+          type: string
+        value:
+          format: int32
+          type: integer
+      type: object
+    EnumInfo:
+      example:
+        values:
+        - name: name
+          caption: caption
+          id: "{}"
+        - name: name
+          caption: caption
+          id: "{}"
+        name: name
+      properties:
+        name:
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/EnumValueInfo'
+          type: array
+      type: object
+    EnumValueInfo:
+      example:
+        name: name
+        caption: caption
+        id: "{}"
+      properties:
+        name:
+          type: string
+        id:
+          type: object
+        caption:
+          type: string
+      type: object
+    MetaClassInfo:
+      example:
+        entityName: entityName
+        ancestor: ancestor
+        properties:
+        - attributeType: DATATYPE
+          name: name
+          description: description
+          readOnly: true
+          type: type
+          persistent: true
+          mandatory: true
+          cardinality: NONE
+        - attributeType: DATATYPE
+          name: name
+          description: description
+          readOnly: true
+          type: type
+          persistent: true
+          mandatory: true
+          cardinality: NONE
+      properties:
+        entityName:
+          type: string
+        ancestor:
+          type: string
+        properties:
+          items:
+            $ref: '#/components/schemas/MetaPropertyInfo'
+          type: array
+      type: object
+    MetaPropertyInfo:
+      example:
+        attributeType: DATATYPE
+        name: name
+        description: description
+        readOnly: true
+        type: type
+        persistent: true
+        mandatory: true
+        cardinality: NONE
+      properties:
+        name:
+          type: string
+        attributeType:
+          enum:
+          - DATATYPE
+          - ENUM
+          - ASSOCIATION
+          - COMPOSITION
+          - EMBEDDED
+          type: string
+        type:
+          type: string
+        cardinality:
+          enum:
+          - NONE
+          - ONE_TO_ONE
+          - MANY_TO_ONE
+          - ONE_TO_MANY
+          - MANY_TO_MANY
+          type: string
+        mandatory:
+          type: boolean
+        readOnly:
+          type: boolean
+        description:
+          type: string
+        persistent:
+          type: boolean
+      type: object
+    DebugResponse:
+      example:
+        response: response
+        success: true
+      properties:
+        response:
+          type: string
+        success:
+          type: boolean
+      type: object
+    uploadFile_1_request:
+      properties:
+        file:
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
 

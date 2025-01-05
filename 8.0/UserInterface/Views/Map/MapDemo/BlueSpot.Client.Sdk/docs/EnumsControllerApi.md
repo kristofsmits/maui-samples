@@ -1,17 +1,17 @@
-# BlueSpot.Client.Sdk.Api.DebugControllerApi
+# BlueSpot.Client.Sdk.Api.EnumsControllerApi
 
 All URIs are relative to *http://localhost:8080*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**Hash**](DebugControllerApi.md#hash) | **GET** /api/public/debug/hash/{input} | Public debug api that returns a hash |
-| [**Hash2**](DebugControllerApi.md#hash2) | **GET** /api/debug/hash/{input} | Private debug api that returns a hash |
+| [**GetAllEnumInfos**](EnumsControllerApi.md#getallenuminfos) | **GET** /rest/metadata/enums |  |
+| [**GetEnumInfo**](EnumsControllerApi.md#getenuminfo) | **GET** /rest/metadata/enums/{enumClassName} |  |
 
-<a id="hash"></a>
-# **Hash**
-> DebugResponse Hash (string input)
+<a id="getallenuminfos"></a>
+# **GetAllEnumInfos**
+> List&lt;EnumInfo&gt; GetAllEnumInfos ()
 
-Public debug api that returns a hash
+
 
 ### Example
 ```csharp
@@ -23,24 +23,22 @@ using BlueSpot.Client.Sdk.Model;
 
 namespace Example
 {
-    public class HashExample
+    public class GetAllEnumInfosExample
     {
         public static void Main()
         {
             Configuration config = new Configuration();
             config.BasePath = "http://localhost:8080";
-            var apiInstance = new DebugControllerApi(config);
-            var input = "input_example";  // string | 
+            var apiInstance = new EnumsControllerApi(config);
 
             try
             {
-                // Public debug api that returns a hash
-                DebugResponse result = apiInstance.Hash(input);
+                List<EnumInfo> result = apiInstance.GetAllEnumInfos();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling DebugControllerApi.Hash: " + e.Message);
+                Debug.Print("Exception when calling EnumsControllerApi.GetAllEnumInfos: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -49,35 +47,30 @@ namespace Example
 }
 ```
 
-#### Using the HashWithHttpInfo variant
+#### Using the GetAllEnumInfosWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Public debug api that returns a hash
-    ApiResponse<DebugResponse> response = apiInstance.HashWithHttpInfo(input);
+    ApiResponse<List<EnumInfo>> response = apiInstance.GetAllEnumInfosWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DebugControllerApi.HashWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling EnumsControllerApi.GetAllEnumInfosWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
 ```
 
 ### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **input** | **string** |  |  |
-
+This endpoint does not need any parameter.
 ### Return type
 
-[**DebugResponse**](DebugResponse.md)
+[**List&lt;EnumInfo&gt;**](EnumInfo.md)
 
 ### Authorization
 
@@ -86,7 +79,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 
 ### HTTP response details
@@ -96,11 +89,11 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="hash2"></a>
-# **Hash2**
-> DebugResponse Hash2 (string input)
+<a id="getenuminfo"></a>
+# **GetEnumInfo**
+> EnumInfo GetEnumInfo (string enumClassName)
 
-Private debug api that returns a hash
+
 
 ### Example
 ```csharp
@@ -112,24 +105,23 @@ using BlueSpot.Client.Sdk.Model;
 
 namespace Example
 {
-    public class Hash2Example
+    public class GetEnumInfoExample
     {
         public static void Main()
         {
             Configuration config = new Configuration();
             config.BasePath = "http://localhost:8080";
-            var apiInstance = new DebugControllerApi(config);
-            var input = "input_example";  // string | 
+            var apiInstance = new EnumsControllerApi(config);
+            var enumClassName = "enumClassName_example";  // string | 
 
             try
             {
-                // Private debug api that returns a hash
-                DebugResponse result = apiInstance.Hash2(input);
+                EnumInfo result = apiInstance.GetEnumInfo(enumClassName);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling DebugControllerApi.Hash2: " + e.Message);
+                Debug.Print("Exception when calling EnumsControllerApi.GetEnumInfo: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -138,21 +130,20 @@ namespace Example
 }
 ```
 
-#### Using the Hash2WithHttpInfo variant
+#### Using the GetEnumInfoWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Private debug api that returns a hash
-    ApiResponse<DebugResponse> response = apiInstance.Hash2WithHttpInfo(input);
+    ApiResponse<EnumInfo> response = apiInstance.GetEnumInfoWithHttpInfo(enumClassName);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling DebugControllerApi.Hash2WithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling EnumsControllerApi.GetEnumInfoWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -162,11 +153,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **input** | **string** |  |  |
+| **enumClassName** | **string** |  |  |
 
 ### Return type
 
-[**DebugResponse**](DebugResponse.md)
+[**EnumInfo**](EnumInfo.md)
 
 ### Authorization
 
@@ -175,7 +166,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 
 ### HTTP response details

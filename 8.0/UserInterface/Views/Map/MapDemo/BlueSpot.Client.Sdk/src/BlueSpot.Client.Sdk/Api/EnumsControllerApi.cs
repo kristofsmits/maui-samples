@@ -23,115 +23,111 @@ namespace BlueSpot.Client.Sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IDebugControllerApiSync : IApiAccessor
+    public interface IEnumsControllerApiSync : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Public debug api that returns a hash
+        /// 
         /// </summary>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DebugResponse</returns>
-        DebugResponse Hash(string input, int operationIndex = 0);
+        /// <returns>List&lt;EnumInfo&gt;</returns>
+        List<EnumInfo> GetAllEnumInfos(int operationIndex = 0);
 
         /// <summary>
-        /// Public debug api that returns a hash
+        /// 
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DebugResponse</returns>
-        ApiResponse<DebugResponse> HashWithHttpInfo(string input, int operationIndex = 0);
+        /// <returns>ApiResponse of List&lt;EnumInfo&gt;</returns>
+        ApiResponse<List<EnumInfo>> GetAllEnumInfosWithHttpInfo(int operationIndex = 0);
         /// <summary>
-        /// Private debug api that returns a hash
+        /// 
         /// </summary>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
+        /// <param name="enumClassName"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DebugResponse</returns>
-        DebugResponse Hash2(string input, int operationIndex = 0);
+        /// <returns>EnumInfo</returns>
+        EnumInfo GetEnumInfo(string enumClassName, int operationIndex = 0);
 
         /// <summary>
-        /// Private debug api that returns a hash
+        /// 
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
+        /// <param name="enumClassName"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DebugResponse</returns>
-        ApiResponse<DebugResponse> Hash2WithHttpInfo(string input, int operationIndex = 0);
+        /// <returns>ApiResponse of EnumInfo</returns>
+        ApiResponse<EnumInfo> GetEnumInfoWithHttpInfo(string enumClassName, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IDebugControllerApiAsync : IApiAccessor
+    public interface IEnumsControllerApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Public debug api that returns a hash
+        /// 
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DebugResponse</returns>
-        System.Threading.Tasks.Task<DebugResponse> HashAsync(string input, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of List&lt;EnumInfo&gt;</returns>
+        System.Threading.Tasks.Task<List<EnumInfo>> GetAllEnumInfosAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Public debug api that returns a hash
+        /// 
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DebugResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DebugResponse>> HashWithHttpInfoAsync(string input, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (List&lt;EnumInfo&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<EnumInfo>>> GetAllEnumInfosWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Private debug api that returns a hash
+        /// 
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
+        /// <param name="enumClassName"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DebugResponse</returns>
-        System.Threading.Tasks.Task<DebugResponse> Hash2Async(string input, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of EnumInfo</returns>
+        System.Threading.Tasks.Task<EnumInfo> GetEnumInfoAsync(string enumClassName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Private debug api that returns a hash
+        /// 
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
+        /// <param name="enumClassName"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DebugResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DebugResponse>> Hash2WithHttpInfoAsync(string input, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (EnumInfo)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EnumInfo>> GetEnumInfoWithHttpInfoAsync(string enumClassName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IDebugControllerApi : IDebugControllerApiSync, IDebugControllerApiAsync
+    public interface IEnumsControllerApi : IEnumsControllerApiSync, IEnumsControllerApiAsync
     {
 
     }
@@ -139,23 +135,23 @@ namespace BlueSpot.Client.Sdk.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class DebugControllerApi : IDebugControllerApi
+    public partial class EnumsControllerApi : IEnumsControllerApi
     {
         private BlueSpot.Client.Sdk.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DebugControllerApi"/> class.
+        /// Initializes a new instance of the <see cref="EnumsControllerApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public DebugControllerApi() : this((string)null)
+        public EnumsControllerApi() : this((string)null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DebugControllerApi"/> class.
+        /// Initializes a new instance of the <see cref="EnumsControllerApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public DebugControllerApi(string basePath)
+        public EnumsControllerApi(string basePath)
         {
             this.Configuration = BlueSpot.Client.Sdk.Client.Configuration.MergeConfigurations(
                 BlueSpot.Client.Sdk.Client.GlobalConfiguration.Instance,
@@ -167,12 +163,12 @@ namespace BlueSpot.Client.Sdk.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DebugControllerApi"/> class
+        /// Initializes a new instance of the <see cref="EnumsControllerApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public DebugControllerApi(BlueSpot.Client.Sdk.Client.Configuration configuration)
+        public EnumsControllerApi(BlueSpot.Client.Sdk.Client.Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -186,13 +182,13 @@ namespace BlueSpot.Client.Sdk.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DebugControllerApi"/> class
+        /// Initializes a new instance of the <see cref="EnumsControllerApi"/> class
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
-        public DebugControllerApi(BlueSpot.Client.Sdk.Client.ISynchronousClient client, BlueSpot.Client.Sdk.Client.IAsynchronousClient asyncClient, BlueSpot.Client.Sdk.Client.IReadableConfiguration configuration)
+        public EnumsControllerApi(BlueSpot.Client.Sdk.Client.ISynchronousClient client, BlueSpot.Client.Sdk.Client.IAsynchronousClient asyncClient, BlueSpot.Client.Sdk.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (asyncClient == null) throw new ArgumentNullException("asyncClient");
@@ -246,33 +242,25 @@ namespace BlueSpot.Client.Sdk.Api
         }
 
         /// <summary>
-        /// Public debug api that returns a hash 
+        ///  
         /// </summary>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DebugResponse</returns>
-        public DebugResponse Hash(string input, int operationIndex = 0)
+        /// <returns>List&lt;EnumInfo&gt;</returns>
+        public List<EnumInfo> GetAllEnumInfos(int operationIndex = 0)
         {
-            BlueSpot.Client.Sdk.Client.ApiResponse<DebugResponse> localVarResponse = HashWithHttpInfo(input);
+            BlueSpot.Client.Sdk.Client.ApiResponse<List<EnumInfo>> localVarResponse = GetAllEnumInfosWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Public debug api that returns a hash 
+        ///  
         /// </summary>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DebugResponse</returns>
-        public BlueSpot.Client.Sdk.Client.ApiResponse<DebugResponse> HashWithHttpInfo(string input, int operationIndex = 0)
+        /// <returns>ApiResponse of List&lt;EnumInfo&gt;</returns>
+        public BlueSpot.Client.Sdk.Client.ApiResponse<List<EnumInfo>> GetAllEnumInfosWithHttpInfo(int operationIndex = 0)
         {
-            // verify the required parameter 'input' is set
-            if (input == null)
-            {
-                throw new BlueSpot.Client.Sdk.Client.ApiException(400, "Missing required parameter 'input' when calling DebugControllerApi->Hash");
-            }
-
             BlueSpot.Client.Sdk.Client.RequestOptions localVarRequestOptions = new BlueSpot.Client.Sdk.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -280,7 +268,7 @@ namespace BlueSpot.Client.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "application/json"
+                "application/json;charset=UTF-8"
             };
 
             var localVarContentType = BlueSpot.Client.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -295,17 +283,16 @@ namespace BlueSpot.Client.Sdk.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("input", BlueSpot.Client.Sdk.Client.ClientUtils.ParameterToString(input)); // path parameter
 
-            localVarRequestOptions.Operation = "DebugControllerApi.Hash";
+            localVarRequestOptions.Operation = "EnumsControllerApi.GetAllEnumInfos";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<DebugResponse>("/api/public/debug/hash/{input}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<List<EnumInfo>>("/rest/metadata/enums", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Hash", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetAllEnumInfos", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -316,35 +303,27 @@ namespace BlueSpot.Client.Sdk.Api
         }
 
         /// <summary>
-        /// Public debug api that returns a hash 
+        ///  
         /// </summary>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DebugResponse</returns>
-        public async System.Threading.Tasks.Task<DebugResponse> HashAsync(string input, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of List&lt;EnumInfo&gt;</returns>
+        public async System.Threading.Tasks.Task<List<EnumInfo>> GetAllEnumInfosAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            BlueSpot.Client.Sdk.Client.ApiResponse<DebugResponse> localVarResponse = await HashWithHttpInfoAsync(input, operationIndex, cancellationToken).ConfigureAwait(false);
+            BlueSpot.Client.Sdk.Client.ApiResponse<List<EnumInfo>> localVarResponse = await GetAllEnumInfosWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Public debug api that returns a hash 
+        ///  
         /// </summary>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DebugResponse)</returns>
-        public async System.Threading.Tasks.Task<BlueSpot.Client.Sdk.Client.ApiResponse<DebugResponse>> HashWithHttpInfoAsync(string input, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (List&lt;EnumInfo&gt;)</returns>
+        public async System.Threading.Tasks.Task<BlueSpot.Client.Sdk.Client.ApiResponse<List<EnumInfo>>> GetAllEnumInfosWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'input' is set
-            if (input == null)
-            {
-                throw new BlueSpot.Client.Sdk.Client.ApiException(400, "Missing required parameter 'input' when calling DebugControllerApi->Hash");
-            }
-
 
             BlueSpot.Client.Sdk.Client.RequestOptions localVarRequestOptions = new BlueSpot.Client.Sdk.Client.RequestOptions();
 
@@ -353,7 +332,7 @@ namespace BlueSpot.Client.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "application/json"
+                "application/json;charset=UTF-8"
             };
 
             var localVarContentType = BlueSpot.Client.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -368,18 +347,17 @@ namespace BlueSpot.Client.Sdk.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("input", BlueSpot.Client.Sdk.Client.ClientUtils.ParameterToString(input)); // path parameter
 
-            localVarRequestOptions.Operation = "DebugControllerApi.Hash";
+            localVarRequestOptions.Operation = "EnumsControllerApi.GetAllEnumInfos";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<DebugResponse>("/api/public/debug/hash/{input}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<List<EnumInfo>>("/rest/metadata/enums", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Hash", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetAllEnumInfos", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -390,31 +368,31 @@ namespace BlueSpot.Client.Sdk.Api
         }
 
         /// <summary>
-        /// Private debug api that returns a hash 
+        ///  
         /// </summary>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
+        /// <param name="enumClassName"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DebugResponse</returns>
-        public DebugResponse Hash2(string input, int operationIndex = 0)
+        /// <returns>EnumInfo</returns>
+        public EnumInfo GetEnumInfo(string enumClassName, int operationIndex = 0)
         {
-            BlueSpot.Client.Sdk.Client.ApiResponse<DebugResponse> localVarResponse = Hash2WithHttpInfo(input);
+            BlueSpot.Client.Sdk.Client.ApiResponse<EnumInfo> localVarResponse = GetEnumInfoWithHttpInfo(enumClassName);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Private debug api that returns a hash 
+        ///  
         /// </summary>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
+        /// <param name="enumClassName"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DebugResponse</returns>
-        public BlueSpot.Client.Sdk.Client.ApiResponse<DebugResponse> Hash2WithHttpInfo(string input, int operationIndex = 0)
+        /// <returns>ApiResponse of EnumInfo</returns>
+        public BlueSpot.Client.Sdk.Client.ApiResponse<EnumInfo> GetEnumInfoWithHttpInfo(string enumClassName, int operationIndex = 0)
         {
-            // verify the required parameter 'input' is set
-            if (input == null)
+            // verify the required parameter 'enumClassName' is set
+            if (enumClassName == null)
             {
-                throw new BlueSpot.Client.Sdk.Client.ApiException(400, "Missing required parameter 'input' when calling DebugControllerApi->Hash2");
+                throw new BlueSpot.Client.Sdk.Client.ApiException(400, "Missing required parameter 'enumClassName' when calling EnumsControllerApi->GetEnumInfo");
             }
 
             BlueSpot.Client.Sdk.Client.RequestOptions localVarRequestOptions = new BlueSpot.Client.Sdk.Client.RequestOptions();
@@ -424,7 +402,7 @@ namespace BlueSpot.Client.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "application/json"
+                "application/json;charset=UTF-8"
             };
 
             var localVarContentType = BlueSpot.Client.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -439,17 +417,17 @@ namespace BlueSpot.Client.Sdk.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("input", BlueSpot.Client.Sdk.Client.ClientUtils.ParameterToString(input)); // path parameter
+            localVarRequestOptions.PathParameters.Add("enumClassName", BlueSpot.Client.Sdk.Client.ClientUtils.ParameterToString(enumClassName)); // path parameter
 
-            localVarRequestOptions.Operation = "DebugControllerApi.Hash2";
+            localVarRequestOptions.Operation = "EnumsControllerApi.GetEnumInfo";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<DebugResponse>("/api/debug/hash/{input}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<EnumInfo>("/rest/metadata/enums/{enumClassName}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Hash2", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetEnumInfo", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -460,33 +438,33 @@ namespace BlueSpot.Client.Sdk.Api
         }
 
         /// <summary>
-        /// Private debug api that returns a hash 
+        ///  
         /// </summary>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
+        /// <param name="enumClassName"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DebugResponse</returns>
-        public async System.Threading.Tasks.Task<DebugResponse> Hash2Async(string input, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of EnumInfo</returns>
+        public async System.Threading.Tasks.Task<EnumInfo> GetEnumInfoAsync(string enumClassName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            BlueSpot.Client.Sdk.Client.ApiResponse<DebugResponse> localVarResponse = await Hash2WithHttpInfoAsync(input, operationIndex, cancellationToken).ConfigureAwait(false);
+            BlueSpot.Client.Sdk.Client.ApiResponse<EnumInfo> localVarResponse = await GetEnumInfoWithHttpInfoAsync(enumClassName, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Private debug api that returns a hash 
+        ///  
         /// </summary>
         /// <exception cref="BlueSpot.Client.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="input"></param>
+        /// <param name="enumClassName"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DebugResponse)</returns>
-        public async System.Threading.Tasks.Task<BlueSpot.Client.Sdk.Client.ApiResponse<DebugResponse>> Hash2WithHttpInfoAsync(string input, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (EnumInfo)</returns>
+        public async System.Threading.Tasks.Task<BlueSpot.Client.Sdk.Client.ApiResponse<EnumInfo>> GetEnumInfoWithHttpInfoAsync(string enumClassName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'input' is set
-            if (input == null)
+            // verify the required parameter 'enumClassName' is set
+            if (enumClassName == null)
             {
-                throw new BlueSpot.Client.Sdk.Client.ApiException(400, "Missing required parameter 'input' when calling DebugControllerApi->Hash2");
+                throw new BlueSpot.Client.Sdk.Client.ApiException(400, "Missing required parameter 'enumClassName' when calling EnumsControllerApi->GetEnumInfo");
             }
 
 
@@ -497,7 +475,7 @@ namespace BlueSpot.Client.Sdk.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "application/json"
+                "application/json;charset=UTF-8"
             };
 
             var localVarContentType = BlueSpot.Client.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -512,18 +490,18 @@ namespace BlueSpot.Client.Sdk.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("input", BlueSpot.Client.Sdk.Client.ClientUtils.ParameterToString(input)); // path parameter
+            localVarRequestOptions.PathParameters.Add("enumClassName", BlueSpot.Client.Sdk.Client.ClientUtils.ParameterToString(enumClassName)); // path parameter
 
-            localVarRequestOptions.Operation = "DebugControllerApi.Hash2";
+            localVarRequestOptions.Operation = "EnumsControllerApi.GetEnumInfo";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<DebugResponse>("/api/debug/hash/{input}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<EnumInfo>("/rest/metadata/enums/{enumClassName}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Hash2", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetEnumInfo", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
