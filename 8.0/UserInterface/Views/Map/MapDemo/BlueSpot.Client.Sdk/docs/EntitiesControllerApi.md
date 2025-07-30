@@ -1,6 +1,6 @@
 # BlueSpot.Client.Sdk.Api.EntitiesControllerApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://bluespotserver.onrender.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -37,7 +37,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new EntitiesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var filter = "filter_example";  // string | 
@@ -128,7 +128,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new EntitiesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var body = "body_example";  // string | 
@@ -217,7 +217,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new EntitiesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var body = "body_example";  // string | 
@@ -312,7 +312,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new EntitiesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var body = "body_example";  // string | 
@@ -403,7 +403,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new EntitiesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var entityId = "entityId_example";  // string | 
@@ -494,7 +494,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new EntitiesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var fetchPlan = "fetchPlan_example";  // string |  (optional) 
@@ -597,7 +597,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new EntitiesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var entityId = "entityId_example";  // string | 
@@ -694,7 +694,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new EntitiesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var filter = "filter_example";  // string | 
@@ -799,7 +799,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new EntitiesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var body = "body_example";  // string | 
@@ -888,7 +888,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new EntitiesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var body = "body_example";  // string | 
@@ -983,7 +983,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new EntitiesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var entityId = "entityId_example";  // string | 

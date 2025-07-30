@@ -1,6 +1,6 @@
 # BlueSpot.Client.Sdk.Api.QueriesControllerApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://bluespotserver.onrender.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -31,7 +31,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new QueriesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var queryName = "queryName_example";  // string | 
@@ -138,7 +138,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new QueriesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var queryName = "queryName_example";  // string | 
@@ -245,7 +245,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new QueriesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var queryName = "queryName_example";  // string | 
@@ -338,7 +338,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new QueriesControllerApi(config);
             var entityName = "entityName_example";  // string | 
             var queryName = "queryName_example";  // string | 
@@ -431,7 +431,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new QueriesControllerApi(config);
             var entityName = "entityName_example";  // string | 
 

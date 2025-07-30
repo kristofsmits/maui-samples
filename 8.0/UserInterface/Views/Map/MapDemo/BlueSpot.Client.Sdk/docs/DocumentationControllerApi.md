@@ -1,6 +1,6 @@
 # BlueSpot.Client.Sdk.Api.DocumentationControllerApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://bluespotserver.onrender.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -30,7 +30,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new DocumentationControllerApi(config);
 
             try
@@ -112,7 +112,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new DocumentationControllerApi(config);
 
             try
@@ -194,7 +194,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new DocumentationControllerApi(config);
 
             try
@@ -276,7 +276,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new DocumentationControllerApi(config);
 
             try

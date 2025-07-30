@@ -1,0 +1,340 @@
+{
+  "balanceValve": {
+    "identifier": "MN80597.400",
+    "library": "heatingCooling",
+    "diameter": "dn.15",
+    "connectionType": "threaded",
+    "operatingRange": {
+      "maximalNominalPressure": "2500000.0Pa",
+      "minimalTemperature": "-20.0°C",
+      "maximalTemperature": "120.0°C",
+      "minimalPressureDrop": "3000.0Pa",
+      "maximalPressureDrop": "100000.0Pa",
+      "minimalFlowRate": "0.027m3/h",
+      "maximalFlowRate": "0.126m3/h"
+    },
+    "maximalKvValue": "0.23",
+    "minimalKvValue": "0.018",
+    "optimalKvValue": "0.1725",
+    "presets": [
+      { "identifier": "1", "value": "0.05" },
+      { "identifier": "3", "value": "0.16" },
+      { "identifier": "5", "value": "0.2" },
+      { "identifier": "2", "value": "0.11" },
+      { "identifier": "9", "value": "0.23" },
+      { "identifier": "4", "value": "0.19" },
+      { "identifier": "7", "value": "0.22" },
+      { "identifier": "6", "value": "0.21" }
+    ]
+  },
+  "differentialPressureControlValve": {
+    "identifier": "MN80597.5282",
+    "library": "heatingCooling",
+    "diameter": "dn.32",
+    "connectionType": "threaded",
+    "operatingRange": {
+      "maximalNominalPressure": "2500000.0Pa",
+      "minimalTemperature": "-20.0°C",
+      "maximalTemperature": "120.0°C",
+      "minimalPressureDrop": "1000.0Pa",
+      "maximalPressureDrop": "40000.0Pa",
+      "minimalFlowRate": "0.141m3/h",
+      "maximalFlowRate": "5.08m3/h"
+    },
+    "maximalPartnerValvePressureDrop": "0.0Pa",
+    "presets": [
+      {
+        "identifier": "53",
+        "differentialPressure": "53000.0Pa",
+        "minimalFlowRate": "0.229m3/h",
+        "maximalFlowRate": "4.586m3/h",
+        "optimalFlowRate": "3.21m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "50",
+        "differentialPressure": "50000.0Pa",
+        "minimalFlowRate": "0.223m3/h",
+        "maximalFlowRate": "4.455m3/h",
+        "optimalFlowRate": "3.119m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "47",
+        "differentialPressure": "47000.0Pa",
+        "minimalFlowRate": "0.216m3/h",
+        "maximalFlowRate": "4.319m3/h",
+        "optimalFlowRate": "3.023m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "56",
+        "differentialPressure": "56000.0Pa",
+        "minimalFlowRate": "0.236m3/h",
+        "maximalFlowRate": "4.714m3/h",
+        "optimalFlowRate": "3.23m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "59",
+        "differentialPressure": "59000.0Pa",
+        "minimalFlowRate": "0.242m3/h",
+        "maximalFlowRate": "4.839m3/h",
+        "optimalFlowRate": "3.389m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "32",
+        "differentialPressure": "32000.0Pa",
+        "minimalFlowRate": "0.178m3/h",
+        "maximalFlowRate": "3.564m3/h",
+        "optimalFlowRate": "2.495m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "62",
+        "differentialPressure": "62000.0Pa",
+        "minimalFlowRate": "0.248m3/h",
+        "maximalFlowRate": "4.961m3/h",
+        "optimalFlowRate": "3.473m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "20",
+        "differentialPressure": "20000.0Pa",
+        "minimalFlowRate": "0.141m3/h",
+        "maximalFlowRate": "2.817m3/h",
+        "optimalFlowRate": "1.972m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "41",
+        "differentialPressure": "41000.0Pa",
+        "minimalFlowRate": "0.202m3/h",
+        "maximalFlowRate": "4.034m3/h",
+        "optimalFlowRate": "2.824m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "29",
+        "differentialPressure": "29000.0Pa",
+        "minimalFlowRate": "0.17m3/h",
+        "maximalFlowRate": "3.393m3/h",
+        "optimalFlowRate": "2.375m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "38",
+        "differentialPressure": "38000.0Pa",
+        "minimalFlowRate": "0.194m3/h",
+        "maximalFlowRate": "3.884m3/h",
+        "optimalFlowRate": "2.719m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "44",
+        "differentialPressure": "44000.0Pa",
+        "minimalFlowRate": "0.209m3/h",
+        "maximalFlowRate": "4.179m3/h",
+        "optimalFlowRate": "2.925m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "65",
+        "differentialPressure": "65000.0Pa",
+        "minimalFlowRate": "0.254m3/h",
+        "maximalFlowRate": "5.079m3/h",
+        "optimalFlowRate": "3.555m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "23",
+        "differentialPressure": "23000.0Pa",
+        "minimalFlowRate": "0.151m3/h",
+        "maximalFlowRate": "3.021m3/h",
+        "optimalFlowRate": "2.115m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "26",
+        "differentialPressure": "26000.0Pa",
+        "minimalFlowRate": "0.161m3/h",
+        "maximalFlowRate": "3.212m3/h",
+        "optimalFlowRate": "2.248m3/h",
+        "multiplicativeFactor": "1.1"
+      },
+      {
+        "identifier": "35",
+        "differentialPressure": "35000.0Pa",
+        "minimalFlowRate": "0.186m3/h",
+        "maximalFlowRate": "3.727m3/h",
+        "optimalFlowRate": "2.609m3/h",
+        "multiplicativeFactor": "1.1"
+      }
+    ],
+    "mediumKvValue": "4.5",
+    "maximalKvValue": "6.3",
+    "deviation": "25.0%"
+  },
+  "pressureIndependentControlValve": {
+    "identifier": "MN80597.001",
+    "library": "heatingCooling",
+    "diameter": "dn.15",
+    "connectionType": "threaded",
+    "operatingRange": {
+      "maximalNominalPressure": "2500000.0Pa",
+      "minimalTemperature": "-20.0°C",
+      "maximalTemperature": "120.0°C",
+      "minimalPressureDrop": "30000.0Pa",
+      "maximalPressureDrop": "400000.0Pa",
+      "minimalFlowRate": "0.036m3/h",
+      "maximalFlowRate": "0.118m3/h"
+    },
+    "presets": [
+      {
+        "identifier": "75",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.101m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "70",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.108m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "14",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.036m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "90",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.115m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "50",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.097m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "95",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.117m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "35",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.077m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "45",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.092m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "65",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.106m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "80",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.112m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "60",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.103m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "40",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.085m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "85",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.113m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "30",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.065m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "100",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.119m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "20",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.047m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "25",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.058m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      },
+      {
+        "identifier": "55",
+        "minimalPressureDrop": "30000.0Pa",
+        "maximalPressureDrop": "400000.0Pa",
+        "presetFlow": "0.101m3/h",
+        "presetFlowAt2K": "0.0m3/h"
+      }
+    ]
+  },
+  "twoWayModulatingValve": {
+    "identifier": "60-235-415",
+    "library": "heatingCooling",
+    "diameter": "dn.15",
+    "connectionType": "flanged",
+    "operatingRange": {
+      "maximalNominalPressure": "1600000.0Pa",
+      "minimalTemperature": "-10.0°C",
+      "maximalTemperature": "150.0°C",
+      "minimalPressureDrop": "0",
+      "maximalPressureDrop": "0",
+      "minimalFlowRate": "0",
+      "maximalFlowRate": "0"
+    },
+    "kvsValue": "2.5",
+    "rangability": "50.0",
+    "valveType": "equi_percentile"
+  }
+}

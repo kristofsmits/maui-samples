@@ -1,6 +1,6 @@
 # BlueSpot.Client.Sdk.Api.FileDownloadControllerApi
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://bluespotserver.onrender.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -27,7 +27,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new FileDownloadControllerApi(config);
             var fileRef = "fileRef_example";  // string | 
             var attachment = true;  // bool? |  (optional) 

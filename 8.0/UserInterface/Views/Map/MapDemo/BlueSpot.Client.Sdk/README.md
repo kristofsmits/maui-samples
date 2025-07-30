@@ -72,7 +72,7 @@ namespace Example
         {
 
             Configuration config = new Configuration();
-            config.BasePath = "http://localhost:8080";
+            config.BasePath = "https://bluespotserver.onrender.com";
             var apiInstance = new DatatypesControllerApi(config);
 
             try
@@ -95,7 +95,7 @@ namespace Example
 <a id="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *https://bluespotserver.onrender.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

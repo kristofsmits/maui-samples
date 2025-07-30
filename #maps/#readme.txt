@@ -16,3 +16,6 @@ https://www.telerik.com/blogs/beyond-basics-getting-started-media-picker-net-mau
 https://cloud.google.com/sdk/docs/install-sdk
 
 https://learn.microsoft.com/en-us/azure/azure-functions/functions-create-your-first-function-visual-studio
+
+
+https://learn.microsoft.com/en-us/dotnet/maui/android/device/setup?view=net-maui-9.0
