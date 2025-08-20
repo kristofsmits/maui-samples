@@ -50,7 +50,7 @@
                     Orientation="Horizontal">
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">
-                <Button Text="Add"
+                <Button Text="SV"
                         Command="{Binding AddLocationCommand}" />
                 <Button Text="Remove"
                         Command="{Binding RemoveLocationCommand}" />
@@ -62,6 +62,8 @@
             </StackLayout>
         </ScrollView>
         <AbsoluteLayout HorizontalOptions="Center">
+            <!--0.6 in LayoutBounds means : at 0.6 height starting from top -->
+            <!--0 in LayoutBounds means : at 0 width starting from center (see HorizontalOptions) -->
             <Button x:Name="streetview"
                     IsVisible="False"
                     Text="Add"
